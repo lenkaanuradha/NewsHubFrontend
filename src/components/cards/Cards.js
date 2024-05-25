@@ -14,14 +14,14 @@ const Cards = () => {
     try {
 
       const response = await axiosInstance.post(
-        `${process.env.REACT_APP_BACKEND_URL}/news/Like/${newsid}`
+        `${process.env.REACT_APP_BACKEND_URL}/backend/news/Like/${newsid}`
       );
           
         if (response.status === 200) {
         const fetchNews = async () => {
           try {
             const response = await axios.get(
-              `${process.env.REACT_APP_BACKEND_URL}/news/getAllNews`
+              `${process.env.REACT_APP_BACKEND_URL}/backend/news/getAllNews`
             );
             if (response.status === 200) {
               setNews(response.data.allNews);
@@ -45,7 +45,7 @@ const Cards = () => {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/news/getAllNews`
+          `${process.env.REACT_APP_BACKEND_URL}/backend/news/getAllNews`
         );
         if (response.status === 200) {
           setNews(response.data.allNews);

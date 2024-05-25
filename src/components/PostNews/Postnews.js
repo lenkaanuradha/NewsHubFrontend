@@ -13,7 +13,7 @@ export default function Postnews() {
     e.preventDefault();
     console.log(credentials);
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/news/postnews`, credentials);
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/backend/news/postnews`, credentials);
       if (res.data.success) {
         navigate('/');
         console.log(res.data);
