@@ -8,14 +8,14 @@ export default function NewsPosts() {
   const [news, setNews] = useState([]);
   const handleDelete = async (newsid) => {
     const res = await axios.delete(
-      `http://localhost:8800/backend/news/delete/${newsid}`
+      `${process.env.REACT_APP_BACKEND_URL}/news/delete/${newsid}`
     );
     if (res.status === 200) {
       console.log("deleted");
       const fetchAllNews = async () => {
         try {
           const response = await axios.get(
-            "http://localhost:8800/backend/news/getallNews"
+            `${process.env.REACT_APP_BACKEND_URL}/news/getallNews`
           );
           if (response.status === 200) {
             setNews(response.data.allNews);
@@ -31,7 +31,7 @@ export default function NewsPosts() {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8800/backend/news/getAllNews"
+          `${process.env.REACT_APP_BACKEND_URL}/news/getAllNews`
         );
         if (response.status === 200) {
           setNews(response.data.allNews);

@@ -26,7 +26,7 @@ export default function EditUser() {
         e.preventDefault()
        
         try {
-            const res = await axios.put(`http://localhost:8800/backend/users/updateUser/${userid}`, credentials);
+            const res = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/users/updateUser/${userid}`, credentials);
             console.log(res.data.success)
            
            if(res.data.success){

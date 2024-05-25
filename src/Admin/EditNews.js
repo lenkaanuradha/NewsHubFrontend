@@ -14,7 +14,7 @@ export default function Postnews() {
     e.preventDefault();
     console.log(credentials);
     try {
-      const res = await axios.put(`http://localhost:8800/backend/news/update/${news_id}`, credentials);
+      const res = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/news/update/${news_id}`, credentials);
       
       if (res.data.success) {
         navigate('/admin/posts');

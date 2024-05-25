@@ -26,7 +26,7 @@ export default function Register() {
         e.preventDefault()
         console.log(credentials)
         try {
-            const res = await axios.post('http://localhost:8800/backend/auth/register', credentials);
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, credentials);
             console.log(res.data.success)
            
            if(res.data.success){

@@ -1,7 +1,3 @@
-
-import axios from "axios";
-
-
 import Axios from "axios";
 import { toast } from "react-toastify";
 
@@ -18,7 +14,7 @@ const authRequestInterceptor = (config) => {
 };
 
 export const axiosInstance = Axios.create({
-  baseURL: "http://localhost:8800/backend",
+  baseURL: `${process.env.REACT_APP_BACKEND_URL}`,
 });
 
 axiosInstance.interceptors.response.use(function (response) {

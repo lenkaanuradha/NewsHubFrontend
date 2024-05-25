@@ -22,7 +22,7 @@ export default function CommentSec() {
   const handleDelete = async (commentid) => {
    
     const res = await axios.delete(
-      `http://localhost:8800/backend/comments/delete/${commentid}`,
+      `${process.env.REACT_APP_BACKEND_URL}/comments/delete/${commentid}`,
       {
         author:localStorage.getItem('username')
       }
@@ -32,7 +32,7 @@ export default function CommentSec() {
     if (res.data.success) {
       const fetchComments = async () => {
         const res = await axios.get(
-          `http://localhost:8800/backend/news/getnewswithcomments/${newsid}`
+          `${process.env.REACT_APP_BACKEND_URL}/news/getnewswithcomments/${newsid}`
         );
 
         setComments(res.data.comments);
@@ -54,14 +54,14 @@ export default function CommentSec() {
     e.preventDefault();
     try {
       const res = await axiosInstance.post(
-        `http://localhost:8800/backend/comments/createcomment/${newsid}`,
+        `${process.env.REACT_APP_BACKEND_URL}/comments/createcomment/${newsid}`,
         credentials
       );
       console.log(res.data.success);
       if (res.data.success) {
         const fetchComments = async () => {
           const res = await axios.get(
-            `http://localhost:8800/backend/news/getnewswithcomments/${newsid}`
+            `${process.env.REACT_APP_BACKEND_URL}/news/getnewswithcomments/${newsid}`
           );
 
           setComments(res.data.comments);
@@ -75,7 +75,7 @@ export default function CommentSec() {
   useEffect(() => {
     const fetchComments = async () => {
       const res = await axios.get(
-        `http://localhost:8800/backend/news/getnewswithcomments/${newsid}`
+        `${process.env.REACT_APP_BACKEND_URL}/news/getnewswithcomments/${newsid}`
       );
 
       setComments(res.data.comments);

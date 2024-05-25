@@ -7,13 +7,13 @@ export default function Users() {
     const [allusers,setAllUsers]=useState([]);
     
     const handleDelete = async(userid)=>{
-       const res= await axios.delete(`http://localhost:8800/backend/users/deleteUser/${userid}`)
+       const res= await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/users/deleteUser/${userid}`)
        if(res.status === 200)
           {
             console.log("deleted");
             const fetchAllusers = async () => {
               try {
-                const response = await axios.get("http://localhost:8800/backend/users/getallusers");
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/getallusers`);
                 if (response.status === 200) {
                   setAllUsers(response.data.allUsers);
                  
@@ -30,7 +30,7 @@ export default function Users() {
     useEffect(() => {
         const fetchAllusers = async () => {
           try {
-            const response = await axios.get("http://localhost:8800/backend/users/getallusers");
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/getallusers`);
             if (response.status === 200) {
               setAllUsers(response.data.allUsers);
              
