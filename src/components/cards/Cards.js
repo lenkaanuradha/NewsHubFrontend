@@ -21,7 +21,7 @@ const Cards = () => {
         const fetchNews = async () => {
           try {
             const response = await axios.get(
-              `${process.env.REACT_APP_BACKEND_URL}/backend/news/getAllNews`
+              `http://localhost:8800/backend/news/getAllNews`
             );
             if (response.status === 200) {
               setNews(response.data.allNews);
